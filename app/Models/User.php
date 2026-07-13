@@ -29,4 +29,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+        /**
+     * Relasi: Satu User bisa membuat banyak Announcements.
+     * hasMany = "satu user punya banyak announcements"
+     */
+    public function announcements(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Announcement::class, 'users_id');
+    }
+
+    /**
+     * Relasi: Satu User bisa membuat banyak News.
+     * hasMany = "satu user punya banyak news"
+     */
+    public function news(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(News::class, 'users_id');
+    }
 }
