@@ -19,10 +19,15 @@ class GreetingResource extends Resource
     protected static ?string $model = Greeting::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
+
     protected static ?string $navigationLabel = 'Sambutan';
+
     protected static ?string $modelLabel = 'Sambutan';
+
     protected static ?string $pluralModelLabel = 'Sambutan';
-    protected static string|\UnitEnum|null $navigationGroup = 'Manajemen Konten';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Manajemen Konten';
+
     protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
