@@ -4,11 +4,15 @@
         {{-- KOLOM 1: LOGO + ALAMAT --}}
         <div class="md:col-span-2">
             @isset($footer)
-                <img src="{{ asset('storage/' . $footer->image) }}"
-                     alt="Logo B University"
-                     class="h-12 w-auto mb-4 brightness-0 invert">
+                <img
+                    src="{{ asset('storage/' . $footer->image) }}"
+                    alt="Logo B University"
+                    class="h-12 w-auto mb-4"
+                >
             @endisset
+
             <h3 class="text-white text-lg font-bold mb-3">B University</h3>
+
             <p class="text-sm leading-relaxed">
                 {{ $footer->alamat ?? 'Alamat universitas akan ditampilkan di sini.' }}
             </p>
@@ -16,28 +20,69 @@
 
         {{-- KOLOM 2: NAVIGASI --}}
         <div>
-            <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-4">Navigasi</h4>
+            <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+                Navigasi
+            </h4>
+
             <ul class="space-y-2 text-sm">
-                <li><a href="{{ route('profile') }}"       class="hover:text-white transition">Profil Universitas</a></li>
-                <li><a href="{{ route('lectures') }}"      class="hover:text-white transition">Dosen</a></li>
-                <li><a href="{{ route('students') }}"      class="hover:text-white transition">Mahasiswa</a></li>
-                <li><a href="{{ route('announcements') }}" class="hover:text-white transition">Pengumuman</a></li>
-                <li><a href="{{ route('news') }}"          class="hover:text-white transition">Berita</a></li>
+                <li>
+                    <a href="{{ route('profile') }}" class="hover:text-white transition">
+                        Profil Universitas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('lectures') }}" class="hover:text-white transition">
+                        Dosen
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('students') }}" class="hover:text-white transition">
+                        Mahasiswa
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('announcements') }}" class="hover:text-white transition">
+                        Pengumuman
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('news') }}" class="hover:text-white transition">
+                        Berita
+                    </a>
+                </li>
             </ul>
         </div>
 
         {{-- KOLOM 3: KONTAK --}}
         <div>
-            <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-4">Kontak</h4>
+            <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-4">
+                Kontak
+            </h4>
+
             <ul class="space-y-3 text-sm">
                 @isset($footer)
                     <li class="flex items-start gap-2">
                         <span aria-hidden="true">✉️</span>
-                        <a href="mailto:{{ $footer->email }}" class="hover:text-white break-all">{{ $footer->email }}</a>
+
+                        <a href="mailto:{{ $footer->email }}"
+                           class="hover:text-white break-all">
+                            {{ $footer->email }}
+                        </a>
                     </li>
+
                     <li class="flex items-start gap-2">
                         <span aria-hidden="true">💬</span>
-                        <a href="https://wa.me/62{{ $footer->wa }}" target="_blank" rel="noopener" class="hover:text-white">+62 {{ $footer->wa }}</a>
+
+                        <a href="https://wa.me/62{{ $footer->wa }}"
+                           target="_blank"
+                           rel="noopener"
+                           class="hover:text-white">
+                            +62 {{ $footer->wa }}
+                        </a>
                     </li>
                 @endisset
             </ul>
@@ -45,14 +90,37 @@
             {{-- SOSIAL MEDIA --}}
             @isset($footer)
                 <div class="flex gap-3 mt-5">
-                    <a href="{{ $footer->link_instagram }}" target="_blank" rel="noopener"
-                       aria-label="Instagram" class="hover:text-white transition">📷</a>
-                    <a href="{{ $footer->link_youtube }}" target="_blank" rel="noopener"
-                       aria-label="YouTube" class="hover:text-white transition">▶️</a>
-                    <a href="{{ $footer->link_linkedin }}" target="_blank" rel="noopener"
-                       aria-label="LinkedIn" class="hover:text-white transition">💼</a>
-                    <a href="{{ $footer->link_facebook }}" target="_blank" rel="noopener"
-                       aria-label="Facebook" class="hover:text-white transition">🌐</a>
+                    <a href="{{ $footer->link_instagram }}"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Instagram"
+                       class="hover:text-white transition">
+                        📷
+                    </a>
+
+                    <a href="{{ $footer->link_youtube }}"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="YouTube"
+                       class="hover:text-white transition">
+                        ▶️
+                    </a>
+
+                    <a href="{{ $footer->link_linkedin }}"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="LinkedIn"
+                       class="hover:text-white transition">
+                        💼
+                    </a>
+
+                    <a href="{{ $footer->link_facebook }}"
+                       target="_blank"
+                       rel="noopener"
+                       aria-label="Facebook"
+                       class="hover:text-white transition">
+                        🌐
+                    </a>
                 </div>
             @endisset
         </div>
