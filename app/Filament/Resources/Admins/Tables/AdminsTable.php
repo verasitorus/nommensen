@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,18 +16,34 @@ class AdminsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('image')
+                    ->label('Foto')
+                    ->disk('public')
+                    ->height(60)
+                    ->circular(),
+
                 TextColumn::make('nama')
-                    ->searchable(),
+                    ->label('Nama Lengkap')
+                    ->searchable()
+                    ->sortable(),
+
                 TextColumn::make('nip')
-                    ->searchable(),
+                    ->label('NIP')
+                    ->searchable()
+                    ->copyable()
+                    ->copyMessage('NIP berhasil disalin!')
+                    ->copyMessageDuration(1500),
+
                 TextColumn::make('jabatan')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Jabatan')
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->badge()
+                    ->color('info'),
+
+                TextColumn::make('created_at')
+                    ->label('Ditambahkan')
+                    ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
@@ -41,6 +58,7 @@ class AdminsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('nama', 'asc');
     }
 }

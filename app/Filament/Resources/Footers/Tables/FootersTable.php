@@ -16,32 +16,32 @@ class FootersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
-                TextColumn::make('link_instagram')
-                    ->searchable(),
-                TextColumn::make('link_youtube')
-                    ->searchable(),
-                TextColumn::make('link_linkedin')
-                    ->searchable(),
-                TextColumn::make('link_facebook')
-                    ->searchable(),
+                ImageColumn::make('image')
+                    ->label('Logo')
+                    ->disk('public')
+                    ->height(50),
+
                 TextColumn::make('alamat')
-                    ->searchable(),
+                    ->label('Alamat')
+                    ->searchable()
+                    ->limit(50),
+
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label('Email')
                     ->searchable(),
+
                 TextColumn::make('wa')
-                    ->searchable(),
-                TextColumn::make('link_gmaps')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('WhatsApp')
+                    ->prefix('+62 '),
+
+                TextColumn::make('link_instagram')
+                    ->label('Instagram')
+                    ->limit(20),
+
                 TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Diperbarui')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -54,6 +54,7 @@ class FootersTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('updated_at', 'desc');
     }
 }
